@@ -1,6 +1,6 @@
 # Federated-Learning
 
-This is a Federated Learning run suite with FedAvg and Per-FedAvg (FO and HF versions)
+This is a Federated Learning run suite with FedAvg and Per-FedAvg (FO and HF versions) using torch.distributed, with the help of Xidong Wu of University of Pittsburgh
 
 # Run
 
