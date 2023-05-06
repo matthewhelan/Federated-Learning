@@ -22,8 +22,8 @@ def FedAvg(train_set, test_set, model, args, device):
 	t_toal = 0;
 	t0 = time.time()
 
-	loss_list = []
-	acc_list = []	
+	# loss_list = []
+	# acc_list = []	
 
 	for epoch in range(args.epochs):
 		for siter, (data, target) in enumerate(train_set):
@@ -64,15 +64,17 @@ def FedAvg(train_set, test_set, model, args, device):
 
 				if rank == 0:
 					print("iteration", Iteration // args.inLoop, "training loss", loss_lst[0] / size, "test accuracy", loss_lst[1] / loss_lst[2] )	
-					loss_list.append(loss_lst[0] / size) 
-					acc_list.append(loss_lst[1] / loss_lst[2])
-					if (Iteration // args.inLoop) % 200 == 0:
-						with open('train_loss_fedavg_mn.pkl', 'wb') as f:
-							pickle.dump(loss_list, f)
-						f.close()
-						with open('test_acc_fedavg_mn.pkl', 'wb') as f:
-							pickle.dump(acc_list, f)
-						f.close()
+					
+					
+					# loss_list.append(loss_lst[0] / size) 
+					# acc_list.append(loss_lst[1] / loss_lst[2])
+					# if (Iteration // args.inLoop) % 200 == 0:
+					# 	with open('train_loss_fedavg_mn.pkl', 'wb') as f:
+					# 		pickle.dump(loss_list, f)
+					# 	f.close()
+					# 	with open('test_acc_fedavg_mn.pkl', 'wb') as f:
+					# 		pickle.dump(acc_list, f)
+					# 	f.close()
 
 			Iteration += 1
 

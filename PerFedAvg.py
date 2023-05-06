@@ -16,8 +16,8 @@ import itertools as it
 from tqdm import tqdm
 import pickle
 
-loss_list = []
-acc_list = []
+# loss_list = []
+# acc_list = []
 
 #method to get pairs of data like "s -> (s0,s1), (s1,s2), (s2, s3), ..."
 def pairwise(iterable):
@@ -153,15 +153,16 @@ def PerFedAvg(train_set, test_set, model, args, device):
 
                 if rank == 0:
                     print("iteration", Iteration // args.inLoop, "training loss", loss_lst[0] / size, "test accuracy", loss_lst[1] / loss_lst[2] )  
-                    loss_list.append(loss_lst[0] / size)
-                    acc_list.append(loss_lst[1] / loss_lst[2])
-                    if (Iteration // args.inLoop) % 200 == 0:
-                        with open('train_loss_1_cifar.pkl', 'wb') as f:
-                            pickle.dump(loss_list, f)
-                        f.close()
-                        with open('test_acc_1_cifar.pkl', 'wb') as f:
-                            pickle.dump(acc_list, f)
-                        f.close()
+                    # save accuracy and loss to a list
+                    # loss_list.append(loss_lst[0] / size)
+                    # acc_list.append(loss_lst[1] / loss_lst[2])
+                    # if (Iteration // args.inLoop) % 200 == 0:
+                    #     with open('train_loss_1_cifar.pkl', 'wb') as f:
+                    #         pickle.dump(loss_list, f)
+                    #     f.close()
+                    #     with open('test_acc_1_cifar.pkl', 'wb') as f:
+                    #         pickle.dump(acc_list, f)
+                    #     f.close()
             Iteration += 1
 
             # ### Communication ############
@@ -221,15 +222,15 @@ def train_one_step(size, rank, model, test_set, args, device, Iteration):
 
     if rank == 0:
         print("Global model evaluation: itr", Iteration // args.inLoop, "training loss", loss_lst[0] / size, "test accuracy", loss_lst[1] / loss_lst[2] )
-        loss_list.append(loss_lst[0] / size)
-        acc_list.append(loss_lst[1] / loss_lst[2])
-        if (Iteration // args.inLoop) % 200 == 0:
-            with open('train_loss_1_cifar.pkl', 'wb') as f:
-                pickle.dump(loss_list, f)
-            f.close()
-            with open('test_acc_1_cifar.pkl', 'wb') as f:
-                pickle.dump(acc_list, f)
-            f.close()
+        # loss_list.append(loss_lst[0] / size)
+        # acc_list.append(loss_lst[1] / loss_lst[2])
+        # if (Iteration // args.inLoop) % 200 == 0:
+        #     with open('train_loss_1_cifar.pkl', 'wb') as f:
+        #         pickle.dump(loss_list, f)
+        #     f.close()
+        #     with open('test_acc_1_cifar.pkl', 'wb') as f:
+        #         pickle.dump(acc_list, f)
+        #     f.close()
 
 
 
