@@ -2,9 +2,9 @@
 
 This is a Federated Learning run suite with FedAvg and Per-FedAvg (FO and HF versions)
 
-#to run use this command
+# Run
 
-# python main.py --dataset mnist0 --method perfedavg --worker-size 2 --epochs 10 --batch-size 5 --lr 0.005 --hessian 0 --init
+python main.py --dataset mnist0 --method perfedavg --worker-size 2 --epochs 10 --batch-size 5 --lr 0.005 --hessian 0 --init
 
 available methods are 'fedavg' and 'perfedavg'
 
